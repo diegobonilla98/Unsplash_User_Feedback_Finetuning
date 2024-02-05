@@ -25,6 +25,7 @@ The project embarked on an exploratory journey to enhance image search accuracy 
 
 ### Initial Baseline with CLIP
 The project's first milestone was establishing a CLIP baseline. This foundational step proved to be a success, with CLIP demonstrating robust capabilities in retrieving relevant images. This encouraging start validated CLIP's potential as a core component of our solution, setting a high bar for subsequent enhancements.
+![](./results1/clip_baseline_top_25_retrieval.png)
 
 ### Tag Embeddings Search
 Venturing into tag-based searches, we anticipated a direct method to leverage the semantic richness of tags. However, this approach did not yield the expected improvements. The disconnect between tag embeddings and actual user search intent highlighted the complexity of capturing nuanced user expectations, prompting a reevaluation of our strategies.
