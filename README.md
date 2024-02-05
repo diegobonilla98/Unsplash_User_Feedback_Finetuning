@@ -50,7 +50,7 @@ Finally, CLIP-ViT-B/32 was fine-tuned using raw user keywords as captions encoun
 Incorporating user feedback, we ventured to create more CLIP-friendly captions. This phase involved transforming user keywords into narratives that CLIP could process more naturally. The subsequent fine-tuning phase aimed to align the model more closely with user expectations. For this, the [Tag2Text](https://tag2text.github.io/) model was used to create a caption (and cleaned tags) from the list of user keywords.
 ![](https://tag2text.github.io/static/images/framework.png)
 The created captions contained the user keyword feedback and CLIP-friendly captions. However, after finetuning and despite these efforts, the results did not surpass the baseline CLIP performance, underscoring the challenge of enhancing CLIP's capabilities within the constraints of our approach.
-![](clip_finetune_user_captions_top_25_retrieval.png)
+![](./results1/clip_finetune_user_captions_top_25_retrieval.png)
 Additional exercises are mentioned in the "Future Work" section to search for an explanation of this lack of improvements. The most evident one being improving the finetuning search of better hyperparameters and for more epochs (currently only 5 were used to prevent overfitting). CLIP also suffers from contrastive problems of large batch sizes and a better batch sampler to prevent duplicate classes.
 
 ## Concluding Insights
