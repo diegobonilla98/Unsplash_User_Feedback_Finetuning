@@ -5,6 +5,15 @@ Enhancing CLIP-Based Image Search with User Feedback and Advanced Tag Management
 This project aims to improve a CLIP-based model for image retrieval by leveraging user feedback, advanced tag management, and fine-tuning techniques. The goal is to enhance search relevance and personalization for the Unsplash dataset, making the model more responsive to user preferences and diverse query contexts.
 
 
+## TO-Do
+MArio feedback
+Variances:
+Clip base: 0.0005608
+Keyword Bert Matching: 3.4065568e-05
+Clip user keywords: 0.0004354
+Clip user captions: 0.0003347
+
+
 ## File Description
 - **download_data.py**: Script for downloading the dataset.
 - **merge_dataset.py**: Merges the different dataframes in the dataset using the "photo_id" value and drops rows with empty columns.
