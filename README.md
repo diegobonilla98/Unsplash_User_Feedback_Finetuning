@@ -59,6 +59,8 @@ The created captions contained the user keyword feedback and CLIP-friendly capti
 Additional exercises are mentioned in the "Future Work" section to search for an explanation of this lack of improvements. The most evident one being improving the finetuning search of better hyperparameters and for more epochs (currently only 5 were used to prevent overfitting). CLIP also suffers from contrastive problems of large batch sizes and a better batch sampler to prevent duplicate classes.
 - **Validation Accuracy:** 1.99%
 
+The drop in accuracy from the baseline can be a sign of catastrophical forgetting of CLIP base model. Regularization techniques should be applied.
+
 ## Concluding Insights
 The results of the experiments brought us to a crucial realization: none of the models significantly improved upon the original CLIP results. This outcome, while initially disheartening, provided valuable lessons on the limitations and challenges of adapting CLIP to our specific use case. It highlighted the importance of aligning model training and fine-tuning strategies more closely with the nuanced needs of image search applications and user expectations.
 
