@@ -13,7 +13,8 @@ tokenizer = BertTokenizer.from_pretrained(model_name)
 model = BertModel.from_pretrained(model_name).to("cuda")
 
 # Read dataset
-df = pd.read_csv("unsplash_images_cleaned_user_caption_top_kw.csv")
+df = pd.read_csv("unsplash_images_cleaned_user_caption_top_kw_split_redux.csv")
+df = df[df["split"] == "val"]
 
 
 def encode_tags(tags):

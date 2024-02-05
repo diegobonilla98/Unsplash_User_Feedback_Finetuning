@@ -56,7 +56,8 @@ if __name__ == "__main__":
     text_embedding = encode_text(text, model, device)
 
     # Load image paths from CSV
-    df = pd.read_csv("unsplash_images_cleaned_user_caption_top_kw.csv")
+    df = pd.read_csv("unsplash_images_cleaned_user_caption_top_kw_split_redux.csv")
+    df = df[df["split"] == "val"]
     image_paths = df['saved_path'].tolist()
 
     # Load or generate image embeddings
