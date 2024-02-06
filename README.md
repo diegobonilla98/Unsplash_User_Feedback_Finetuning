@@ -1,5 +1,5 @@
 # Unsplash_User_Feedback_Finetuning
-Enhancing CLIP-Based Image Search with User Feedback and Advanced Tag Management
+Enhancing CLIP-Based Image Search with User Feedback
 
 ## Description
 This project aims to improve a CLIP-based model for image retrieval by leveraging user feedback, advanced tag management, and fine-tuning techniques. The goal is to enhance search relevance and personalization for the Unsplash dataset, making the model more responsive to user preferences and diverse query contexts.
