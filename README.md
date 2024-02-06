@@ -49,7 +49,7 @@ Despite the initial promise, this idea was eventually discarded. The attempt to 
 ### Fine-tuning CLIP with Raw Tags
 Finally, CLIP-ViT-B/32 was fine-tuned using raw user keywords as captions encountered significant challenges. The approach, which seemed plausible in theory, faltered in practice. CLIP's architecture and training methodology were not conducive to handling raw tags effectively, leading to a one-to-many problem where an image could relate to multiple tags across different training instances, diluting the model's focus and effectiveness. To mitigate this, for each image a prompt was developed like "an image with tags: [...]" with the list of user keywords. This didn't improve the CLIP baseline. The problem is the misaligment between these kind captions and what CLIP takes as input. Also, the images contained between 20 and 50 keywords (after clearning) which was also way larger than the CLIP context size. All this problems contributed to the bad results.
 ![](./results1/clip_finetune_user_keywords_top_25_retrieval.png)
-- **Validation Accuracy:** 0.45%
+- **Validation Accuracy:** 4.5%
 
 ### User Feedback and CLIP-Friendly Captions
 Incorporating user feedback, we ventured to create more CLIP-friendly captions. This phase involved transforming user keywords into narratives that CLIP could process more naturally. The subsequent fine-tuning phase aimed to align the model more closely with user expectations. For this, the [Tag2Text](https://tag2text.github.io/) model was used to create a caption (and cleaned tags) from the list of user keywords.
@@ -57,7 +57,7 @@ Incorporating user feedback, we ventured to create more CLIP-friendly captions. 
 The created captions contained the user keyword feedback and CLIP-friendly captions. However, after finetuning and despite these efforts, the results did not surpass the baseline CLIP performance, underscoring the challenge of enhancing CLIP's capabilities within the constraints of our approach.
 ![](./results1/clip_finetune_user_captions_top_25_retrieval.png)
 Additional exercises are mentioned in the "Future Work" section to search for an explanation of this lack of improvements. The most evident one being improving the finetuning search of better hyperparameters and for more epochs (currently only 5 were used to prevent overfitting). CLIP also suffers from contrastive problems of large batch sizes and a better batch sampler to prevent duplicate classes.
-- **Validation Accuracy:** 1.99%
+- **Validation Accuracy:** 19.9%
 
 The drop in accuracy from the baseline can be a sign of catastrophical forgetting of CLIP base model. Regularization techniques should be applied.
 
