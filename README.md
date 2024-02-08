@@ -42,9 +42,9 @@ Venturing into tag-based searches, the embeddings from a general multilingual BE
 - **Validation Accuracy:** TODO
 
 ### Web vs. User Keyword Analysis
-A comparative analysis of web and user keywords revealed surprising similarities, suggesting a potential for a translation model to bridge these spaces. 
+A comparative analysis of web and user keywords revealed surprising similarities. The following graph represents the histogram of the similarity (using BERT embeddings) between the web keywords and user keywords:
 ![](./distribution_keyword_web_user_similarity.png)
-Despite the initial promise, this idea was eventually discarded. The attempt to train a model for converting tag embeddings from web to user spaces encountered insurmountable obstacles, primarily due to the inherent non-alignment of these semantic spaces.
+This uggests a potential for a translation model to bridge these spaces. Despite the initial promise, this idea was eventually discarded. The attempt to train a model for converting tag embeddings from web to user spaces encountered insurmountable obstacles, primarily due to the inherent non-alignment of these semantic spaces.
 
 ### Fine-tuning CLIP with Raw Tags
 Finally, CLIP-ViT-B/32 was fine-tuned using raw user keywords as captions encountered significant challenges. The approach, which seemed plausible in theory, faltered in practice. CLIP's architecture and training methodology were not conducive to handling raw tags effectively, leading to a one-to-many problem where an image could relate to multiple tags across different training instances, diluting the model's focus and effectiveness. To mitigate this, for each image a prompt was developed like "an image with tags: [...]" with the list of user keywords. This didn't improve the CLIP baseline. The problem is the misaligment between these kind captions and what CLIP takes as input. Also, the images contained between 20 and 50 keywords (after clearning) which was also way larger than the CLIP context size. All this problems contributed to the bad results.
