@@ -43,7 +43,9 @@ Venturing into tag-based searches, the embeddings from a general multilingual BE
 
 ### Web vs. User Keyword Analysis
 A comparative analysis of web and user keywords revealed surprising similarities. The following graph represents the histogram of the similarity (using BERT embeddings) between the web keywords and user keywords:
+
 ![](./distribution_keyword_web_user_similarity.png)
+
 This uggests a potential for a translation model to bridge these spaces. Despite the initial promise, this idea was eventually discarded. The attempt to train a model for converting tag embeddings from web to user spaces encountered insurmountable obstacles, primarily due to the inherent non-alignment of these semantic spaces.
 
 ### Fine-tuning CLIP with Raw Tags
