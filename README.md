@@ -32,13 +32,13 @@ The column "split" corresponds to the training/testing/validation split as "trai
 
 ### Initial Baseline with CLIP
 The project's first milestone was establishing a CLIP baseline. This foundational step proved to be a success, with CLIP demonstrating robust capabilities in retrieving relevant images. This encouraging start validated CLIP's potential as a core component of our solution, setting a high bar for subsequent enhancements.
-![](./results1/clip_baseline_top_25_retrieval.png)
+![](./results3/clip_baseline_top_25_retrieval.png)
 These are the results from a cosine similarity search with CLIP-ViT-B/32 baseline. The results are 25 images ordered from top-left to bottom-right. The same query will be used in the different models used to see the differences. More results are in the "results*" folders.
 - **Validation Accuracy:** 32.62%
 
 ### Tag Embeddings Search
 Venturing into tag-based searches, the embeddings from a general multilingual BERT are used to match the user search with the average of keywords in the image. The average was set with the assumption that all tags have the same weight on the image (which can be weighted with additional dataset information in future steps). However, this approach did not yield the expected improvements. The disconnect between tag embeddings and actual user search intent highlighted the complexity of capturing nuanced user expectations, prompting a reevaluation of our strategies.
-![](./results1/bert_combined_keywords_match_top_25_retrieval.png)
+![](./results3/bert_combined_keywords_match_top_25_retrieval.png)
 - **Validation Accuracy:** TODO
 
 ### Web vs. User Keyword Analysis
@@ -51,14 +51,14 @@ This suggests a potential for a translation model to bridge these spaces. Despit
 
 ### Fine-tuning CLIP with Raw Tags
 Finally, CLIP-ViT-B/32 was fine-tuned using raw user keywords as captions encountered significant challenges. The approach, which seemed plausible in theory, faltered in practice. CLIP's architecture and training methodology were not conducive to handling raw tags effectively, leading to a one-to-many problem where an image could relate to multiple tags across different training instances, diluting the model's focus and effectiveness. To mitigate this, for each image a prompt was developed like "an image with tags: [...]" with the list of user keywords. This didn't improve the CLIP baseline. The problem is the misaligment between these kind captions and what CLIP takes as input. Also, the images contained between 20 and 50 keywords (after clearning) which was also way larger than the CLIP context size. All this problems contributed to the bad results.
-![](./results1/clip_finetune_user_keywords_top_25_retrieval.png)
+![](./results3/clip_finetune_user_keywords_top_25_retrieval.png)
 - **Validation Accuracy:** 4.5%
 
 ### User Feedback and CLIP-Friendly Captions
 Incorporating user feedback, we ventured to create more CLIP-friendly captions. This phase involved transforming user keywords into narratives that CLIP could process more naturally. The subsequent fine-tuning phase aimed to align the model more closely with user expectations. For this, the [Tag2Text](https://tag2text.github.io/) model was used to create a caption (and cleaned tags) from the list of user keywords.
 ![](https://tag2text.github.io/static/images/framework.png)
 The created captions contained the user keyword feedback and CLIP-friendly captions. However, after finetuning and despite these efforts, the results did not surpass the baseline CLIP performance, underscoring the challenge of enhancing CLIP's capabilities within the constraints of our approach.
-![](./results1/clip_finetune_user_captions_top_25_retrieval.png)
+![](./results3/clip_finetune_user_captions_top_25_retrieval.png)
 Additional exercises are mentioned in the "Future Work" section to search for an explanation of this lack of improvements. The most evident one being improving the finetuning search of better hyperparameters and for more epochs (currently only 5 were used to prevent overfitting). CLIP also suffers from contrastive problems of large batch sizes and a better batch sampler to prevent duplicate classes.
 - **Validation Accuracy:** 19.9%
 
