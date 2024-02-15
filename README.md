@@ -88,8 +88,12 @@ The results of the experiments brought us to a crucial realization: none of the 
 ## UPDATE
 ### Modifications
 Upon some code reviewing, and with more time, some modifications were made with the intent of increasing the finetuned model accuracy. The modifications are:
+- **Tried a different approach**. Used an algorithm called [ASIF](https://arxiv.org/abs/2210.01738) which doesn't require finetuning for image-text retrieval and uses a method akin to Nearest Neighbours to learn embedding mappings. However, this method didn't give any satisfying results and the idea was discarded. The following improvements are made only in the finetuning code of CLIP.
 - **Increasing the batch size**, from 128 to 768. Contrastive models need a very big batch size to get better representations of the "contrast" between samples in a dataset.
 - **Freezing the text encoder**, after detecting some indication of catastrophical in the previous finetuning, the text encoder part of the model was frozen and only the image encoder part was finetuned. This serves as a regularization technique (and made possible to increase the batch size) and as a better finetuning of modests amounts of data and epochs. Also, freezing the text encoder made the text aligment not change and only the user feedback be learnt from the image interpretations, which makes more sense in this task.
+
+![](./NEW_UPDATE_CLIP_training_curve.png)
+The training curve was more stable.
   
 ### New Results
 After these modifications, the model trained in a more stable way and provided much better results in the validation set:
