@@ -1,7 +1,7 @@
 # Unsplash_User_Feedback_Finetuning
 Enhancing CLIP-Based Image Search with User Feedback
 
-# Table of Contents
+## Table of Contents
 - [Description](#Description)
 - [File Description](#File-Description)
 - [Results](#Results)
