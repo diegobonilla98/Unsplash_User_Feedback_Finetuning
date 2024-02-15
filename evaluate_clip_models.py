@@ -7,7 +7,7 @@ from this_utils import load_model_and_device
 import pandas as pd
 
 # Load the model
-model, preprocess, device = load_model_and_device(None)
+model, preprocess, device = load_model_and_device("NEW_clip_user_finetuned.pth")
 
 
 def preprocess_images(image_paths: List[str], preprocess) -> torch.Tensor:

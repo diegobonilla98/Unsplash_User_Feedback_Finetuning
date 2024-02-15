@@ -33,7 +33,7 @@ def calculate_variance(embeddings):
     return variance
 
 
-def find_and_show_closest_images(text_embedding, image_embeddings, image_paths, top_n=25, result_image_path="clip_finetune_user_captions_top_25_retrieval.png"):
+def find_and_show_closest_images(text_embedding, image_embeddings, image_paths, top_n=25, result_image_path="NEW_clip_finetune_user_captions_top_25_retrieval.png"):
     """
     Find the closest images to the given text embedding and display them.
 
@@ -49,7 +49,7 @@ def find_and_show_closest_images(text_embedding, image_embeddings, image_paths, 
 # Main process
 if __name__ == "__main__":
     # Load model, preprocessing, and device
-    model, preprocess, device = load_model_and_device("clip_user_captions_finetuned.pth")
+    model, preprocess, device = load_model_and_device("NEW_clip_user_finetuned.pth")
 
     # Prepare text embedding
     text = "a plane in the blue sky"

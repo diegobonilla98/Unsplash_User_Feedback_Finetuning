@@ -27,7 +27,8 @@ class CustomDataset(Dataset):
         """
         Initialize the dataset by loading the CSV file containing image paths and captions.
         """
-        self.df = pd.read_csv("unsplash_images_cleaned_user_caption_top_kw.csv")
+        self.df = pd.read_csv("unsplash_images_cleaned_user_caption_top_kw_split_redux.csv")
+        self.df = self.df[self.df["split"] == "train"]
 
     def __len__(self):
         """
@@ -67,7 +68,13 @@ def convert_models_to_fp32(model):
 
 # Initialize dataset and dataloader
 dataset = CustomDataset()
-dataloader = DataLoader(dataset, batch_size=128, shuffle=True)
+batch_size = 768
+dataloader = DataLoader(dataset, batch_size=batch_size, shuffle=True)
+
+for param in model.parameters():
+    param.requires_grad = True
+for param in model.transformer.parameters():
+    param.requires_grad = False
 
 # Training parameters
 EPOCHS = 5
@@ -78,8 +85,9 @@ scheduler = optim.lr_scheduler.CosineAnnealingLR(optimizer, len(dataloader) * EP
 
 # Training loop
 for epoch in range(EPOCHS):
-    pbar = tqdm(dataloader, total=len(dataloader))
-    for batch in pbar:
+    pbar = tqdm(enumerate(dataloader), total=len(dataloader))
+    cumulative_loss = 0
+    for i, batch in pbar:
         optimizer.zero_grad()
         images, texts = batch
         images = images.to(device)
@@ -90,12 +98,14 @@ for epoch in range(EPOCHS):
         ground_truth = torch.arange(len(images), dtype=torch.long, device=device)
         total_loss = (loss_img(logits_per_image, ground_truth) + loss_txt(logits_per_text, ground_truth)) / 2
 
+        cumulative_loss += total_loss.item()
+
         total_loss.backward()
         convert_models_to_fp32(model)
         optimizer.step()
         clip.model.convert_weights(model)
 
-        pbar.set_description(f"Epoch {epoch + 1}/{EPOCHS}, Loss: {total_loss.item():.4f}")
+        pbar.set_description(f"Epoch {epoch + 1}/{EPOCHS}, Loss: {cumulative_loss / (i + 1):.4f}")
 
 # Save the fine-tuned model
-torch.save(model, "clip_user_finetuned.pth")
+torch.save(model, "NEW_clip_user_finetuned.pth")
