@@ -67,6 +67,21 @@ The drop in accuracy from the baseline can be a sign of catastrophical forgettin
 ## Concluding Insights
 The results of the experiments brought us to a crucial realization: none of the models significantly improved upon the original CLIP results. This outcome, while initially disheartening, provided valuable lessons on the limitations and challenges of adapting CLIP to our specific use case. It highlighted the importance of aligning model training and fine-tuning strategies more closely with the nuanced needs of image search applications and user expectations.
 
+## UPDATE
+### Modifications
+Upon some code reviewing, and with more time, some modifications were made with the intent of increasing the finetuned model accuracy. The modifications are:
+- **Increasing the batch size**, from 128 to 768. Contrastive models need a very big batch size to get better representations of the "contrast" between samples in a dataset.
+- **Freezing the text encoder**, after detecting some indication of catastrophical in the previous finetuning, the text encoder part of the model was frozen and only the image encoder part was finetuned. This serves as a regularization technique (and made possible to increase the batch size) and as a better finetuning of modests amounts of data and epochs. Also, freezing the text encoder made the text aligment not change and only the user feedback be learnt from the image interpretations, which makes more sense in this task.
+  
+### New Results
+After these modifications, the model trained in a more stable way and provided much better results in the validation set:
+![](./results3/NEW_clip_finetune_user_captions_top_25_retrieval.png)
+
+- **Validation Accuracy:** 53.89%
+
+The model was able to improve the CLIP baseline. This reinforces the idea that this approach has potential to learn in a supervised stable way. Future work section still applies since the modifications made are very basic.
+
+
 ## Future Work
 Future directions aim to address scalability, efficiency, and personalization:
 
