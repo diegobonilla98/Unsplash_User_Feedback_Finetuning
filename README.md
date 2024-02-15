@@ -51,7 +51,9 @@ The column "split" corresponds to the training/testing/validation split as "trai
 ### Initial Baseline with CLIP
 The project's first milestone was establishing a CLIP baseline. This foundational step proved to be a success, with CLIP demonstrating robust capabilities in retrieving relevant images. This encouraging start validated CLIP's potential as a core component of our solution, setting a high bar for subsequent enhancements.
 
-<img src="./results3/clip_baseline_top_25_retrieval.png" width="300">
+<div style="float:left;margin:0 10px 10px 0" markdown="1">
+    ![](./results3/clip_baseline_top_25_retrieval.png)
+</div>
 
 These are the results from a cosine similarity search with CLIP-ViT-B/32 baseline. The results are 25 images ordered from top-left to bottom-right. The same query will be used in the different models used to see the differences. More results are in the "results*" folders.
 - **Validation Accuracy:** 32.62%
