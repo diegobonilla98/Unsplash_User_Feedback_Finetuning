@@ -1,6 +1,24 @@
 # Unsplash_User_Feedback_Finetuning
 Enhancing CLIP-Based Image Search with User Feedback
 
+# Table of Contents
+- [Description](#Description)
+- [File Description](#File-Description)
+- [Results](#Results)
+  - [Downloading and Clearning Dataset](#Downloading-and-Clearning-Dataset)
+  - [Initial Baseline with CLIP](#Initial-Baseline-with-CLIP)
+  - [Tag Embeddings Search](#Tag-Embeddings-Search)
+  - [Web vs. User Keyword Analysis](#Web-vs.-User-Keyword-Analysis)
+  - [Fine-tuning CLIP with Raw Tags](#Fine-tuning-CLIP-with-Raw-Tags)
+  - [User Feedback and CLIP-Friendly Captions](#User-Feedback-and-CLIP-Friendly-Captions)
+- [Concluding Insights](#Concluding-Insights)
+- [UPDATE](#UPDATE)
+  - [Modifications](#Modifications)
+  - [New Results](#New-Results)
+- [Future Work](#Future-Work)
+- [Run it Yourself](#Run-it-Yourself)
+
+
 ## Description
 This project aims to improve a CLIP-based model for image retrieval by leveraging user feedback, advanced tag management, and fine-tuning techniques. The goal is to enhance search relevance and personalization for the Unsplash dataset, making the model more responsive to user preferences and diverse query contexts.
 
